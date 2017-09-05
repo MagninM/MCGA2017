@@ -46,11 +46,11 @@ namespace ASF.Services.Http
 
         [HttpGet]
         [Route("All")]
-        public AllResponse All()
+        public AllCategoryResponse All()
         {
             try
             {
-                var response = new AllResponse();
+                var response = new AllCategoryResponse();
                 var bc = new CategoryBusiness();
                 response.Result = bc.All();
                 return response;

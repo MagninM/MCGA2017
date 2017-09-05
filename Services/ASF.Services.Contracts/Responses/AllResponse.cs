@@ -16,7 +16,7 @@ namespace ASF.Services.Contracts
 {
     
     [DataContract]
-    public class AllResponse
+    public class AllCategoryResponse
     {
         [DataMember]
         public List<Category> Result { get; set; }

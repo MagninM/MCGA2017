@@ -16,5 +16,13 @@ namespace ASF.UI.WbSite.Areas.Categories.Controllers
             var lista = CP.SelectList();
             return View(lista);
         }
+
+        // GET: Categories/Category
+        public ActionResult Details(int Id)
+        {
+            var CP = new CategoryProcess();
+            var Objeto = CP.Find(Id);
+            return View(Objeto);
+        }
     }
 }

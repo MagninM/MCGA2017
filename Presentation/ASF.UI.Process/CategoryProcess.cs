@@ -21,8 +21,23 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public List<Category> SelectList()
         {
-            var response = HttpGet<AllResponse>("rest/Category/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllCategoryResponse>("rest/Category/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
+
+        public Category Find(int id)
+        {
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<FindResponse>("rest/Category/Find", parameters, MediaType.Json);
+            return response.Result;
+        }
+
+        //public List<Category> Find(int I)
+        //{
+        //    var parameters = new Dictionary<string, object>();
+        //    var response = HttpGet<AllResponse>("rest/Category/Find", new Dictionary<string, object>(I), MediaType.Json);
+        //    return response.Result;
+        //}
     }
 }
