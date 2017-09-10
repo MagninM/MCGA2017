@@ -67,7 +67,8 @@ namespace ASF.Services.Http
             }
         }
 
-        [HttpPut]
+        //[HttpPut]
+        [HttpPost]
         [Route("Edit")]
         public void Edit(Category category)
         {
@@ -90,11 +91,11 @@ namespace ASF.Services.Http
 
         [HttpGet]
         [Route("Find")]
-        public FindResponse Find(int id)
+        public FindCategoryResponse Find(int id)
         {
             try
             {
-                var response = new FindResponse();
+                var response = new FindCategoryResponse();
                 var bc = new CategoryBusiness();
                 response.Result = bc.Find(id);
                 return response;
@@ -112,7 +113,7 @@ namespace ASF.Services.Http
         }
 
         [HttpGet]
-        [Route("Remove/{id}")]
+        [Route("Remove")]
         public void Remove(int id)
         {
             try

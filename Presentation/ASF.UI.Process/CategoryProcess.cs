@@ -29,15 +29,25 @@ namespace ASF.UI.Process
         {
             var parameters = new Dictionary<string, object>();
             parameters.Add("id", id);
-            var response = HttpGet<FindResponse>("rest/Category/Find", parameters, MediaType.Json);
+            var response = HttpGet<FindCategoryResponse>("rest/Category/Find", parameters, MediaType.Json);
             return response.Result;
         }
 
-        //public List<Category> Find(int I)
-        //{
-        //    var parameters = new Dictionary<string, object>();
-        //    var response = HttpGet<AllResponse>("rest/Category/Find", new Dictionary<string, object>(I), MediaType.Json);
-        //    return response.Result;
-        //}
+        public void Insert(Category CAT)
+        {
+            HttpPost<Category>("rest/Category/Add", CAT, MediaType.Json);            
+        }
+
+        public void Edit(Category CAT)
+        {
+            HttpPost<Category>("rest/Category/Edit", CAT, MediaType.Json);
+        }
+
+        public void Delete(int id)
+        {
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            HttpGet<FindCategoryResponse>("rest/Category/Remove", parameters, MediaType.Json);
+        }
     }
 }

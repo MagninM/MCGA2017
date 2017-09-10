@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Responses\AllResponse.cs" />
-    <Compile Include="Responses\FindResponse.cs" />
+    <Compile Include="Responses\AllCategoryResponse.cs" />
+    <Compile Include="Responses\FindCategoryResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\ASF.Entities\ASF.Entities.csproj">
