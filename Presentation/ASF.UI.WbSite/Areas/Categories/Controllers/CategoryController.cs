@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ASF.UI.Process;
 using ASF.Entities;
+using ASF.UI.WbSite.Services.Cache;
 
 namespace ASF.UI.WbSite.Areas.Categories.Controllers
 {
@@ -13,10 +14,12 @@ namespace ASF.UI.WbSite.Areas.Categories.Controllers
         // GET: Categories/Category/Index
         public ActionResult Index()
         {
-            var CP = new CategoryProcess();
-            var lista = CP.SelectList();
+            //var CP = new CategoryProcess();
+            //var lista = CP.SelectList();
+            var lista = DataCache.Instance.CategoryList();
             return View(lista);
         }
+
 
         // GET: Categories/Category/Details
         public ActionResult Details(int Id)
@@ -38,6 +41,8 @@ namespace ASF.UI.WbSite.Areas.Categories.Controllers
         {
             var CP = new CategoryProcess();
             CP.Insert(CAT);
+            //Acá implementamos el borrado del caché. Borra todas las key del caché
+            DataCache.Instance.Remove();
             return RedirectToAction("Index");
         }
 

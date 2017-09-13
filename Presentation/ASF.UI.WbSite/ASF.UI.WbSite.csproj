@@ -239,6 +239,7 @@
   <ItemGroup>
     <Compile Include="Areas\Categories\CategoriesAreaRegistration.cs" />
     <Compile Include="Areas\Categories\Controllers\CategoryController.cs" />
+    <Compile Include="Constants\DataCacheSetting.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
     <Compile Include="Constants\ExtensionMethods\TypeFactory.cs" />
     <Compile Include="Constants\ExtensionMethods\WebGridExtensions.cs" />
@@ -270,6 +271,7 @@
     <Compile Include="Services\BrowserConfig\BrowserConfigService.cs" />
     <Compile Include="Services\BrowserConfig\IBrowserConfigService.cs" />
     <Compile Include="Services\Cache\CacheService.cs" />
+    <Compile Include="Services\Cache\DataCache.cs" />
     <Compile Include="Services\Cache\ICacheService.cs" />
     <Compile Include="Services\Logging\ILoggingService.cs" />
     <Compile Include="Services\Logging\LoggingService.cs" />
