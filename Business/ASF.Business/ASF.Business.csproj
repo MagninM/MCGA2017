@@ -40,8 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartBusiness.cs" />
+    <Compile Include="CartItemBusiness.cs" />
     <Compile Include="CategoryBusiness.cs" />
+    <Compile Include="ClientBusiness.cs" />
+    <Compile Include="CountryBusiness.cs" />
+    <Compile Include="DealerBusiness.cs" />
+    <Compile Include="OrderBusiness.cs" />
+    <Compile Include="OrderDetailBusiness.cs" />
+    <Compile Include="OrderNumberBusiness.cs" />
+    <Compile Include="ProductBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RatingBusiness.cs" />
+    <Compile Include="SettingBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\ASF.Data\ASF.Data.csproj">

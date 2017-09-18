@@ -44,10 +44,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartItemProcess.cs" />
+    <Compile Include="CartProcess.cs" />
     <Compile Include="CategoryProcess.cs" />
+    <Compile Include="ClientProcess.cs" />
+    <Compile Include="CountryProcess.cs" />
+    <Compile Include="DealerProcess.cs" />
     <Compile Include="MediaType.cs" />
+    <Compile Include="OrderDetailProcess.cs" />
+    <Compile Include="OrderNumberProcess.cs" />
+    <Compile Include="OrderProcess.cs" />
     <Compile Include="ProcessComponent.cs" />
+    <Compile Include="ProductProcess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RatingProcess.cs" />
+    <Compile Include="SettingProcess.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Services\ASF.Services.Contracts\ASF.Services.Contracts.csproj">

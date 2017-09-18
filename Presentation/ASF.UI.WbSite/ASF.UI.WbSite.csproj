@@ -237,8 +237,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Areas\CartItems\CartItemsAreaRegistration.cs" />
+    <Compile Include="Areas\Carts\CartsAreaRegistration.cs" />
     <Compile Include="Areas\Categories\CategoriesAreaRegistration.cs" />
     <Compile Include="Areas\Categories\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Clients\ClientsAreaRegistration.cs" />
+    <Compile Include="Areas\Countries\CountriesAreaRegistration.cs" />
+    <Compile Include="Areas\Dealers\DealersAreaRegistration.cs" />
+    <Compile Include="Areas\OrderDetails\OrderDetailsAreaRegistration.cs" />
+    <Compile Include="Areas\OrderNumbers\OrderNumbersAreaRegistration.cs" />
+    <Compile Include="Areas\Orders\OrdersAreaRegistration.cs" />
+    <Compile Include="Areas\Products\ProductsAreaRegistration.cs" />
+    <Compile Include="Areas\Ratings\RatingsAreaRegistration.cs" />
+    <Compile Include="Areas\Settings\SettingsAreaRegistration.cs" />
     <Compile Include="Constants\DataCacheSetting.cs" />
     <Compile Include="Constants\ExtensionMethods\HtmlLabelExtensions.cs" />
     <Compile Include="Constants\ExtensionMethods\TypeFactory.cs" />
@@ -413,6 +424,17 @@
     <Content Include="Areas\Categories\Views\Category\Create.cshtml" />
     <Content Include="Areas\Categories\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Categories\Views\Category\Delete.cshtml" />
+    <Content Include="Areas\CartItems\Views\web.config" />
+    <Content Include="Areas\Carts\Views\web.config" />
+    <Content Include="Areas\Clients\Views\web.config" />
+    <Content Include="Areas\Countries\Views\web.config" />
+    <Content Include="Areas\Dealers\Views\web.config" />
+    <Content Include="Areas\OrderDetails\Views\web.config" />
+    <Content Include="Areas\OrderNumbers\Views\web.config" />
+    <Content Include="Areas\Orders\Views\web.config" />
+    <Content Include="Areas\Products\Views\web.config" />
+    <Content Include="Areas\Ratings\Views\web.config" />
+    <Content Include="Areas\Settings\Views\web.config" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -565,7 +587,40 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\CartItems\Controllers\" />
+    <Folder Include="Areas\CartItems\Models\" />
+    <Folder Include="Areas\CartItems\Views\Shared\" />
+    <Folder Include="Areas\Carts\Controllers\" />
+    <Folder Include="Areas\Carts\Models\" />
+    <Folder Include="Areas\Carts\Views\Shared\" />
     <Folder Include="Areas\Categories\Models\" />
+    <Folder Include="Areas\Clients\Controllers\" />
+    <Folder Include="Areas\Clients\Models\" />
+    <Folder Include="Areas\Clients\Views\Shared\" />
+    <Folder Include="Areas\Countries\Controllers\" />
+    <Folder Include="Areas\Countries\Models\" />
+    <Folder Include="Areas\Countries\Views\Shared\" />
+    <Folder Include="Areas\Dealers\Controllers\" />
+    <Folder Include="Areas\Dealers\Models\" />
+    <Folder Include="Areas\Dealers\Views\Shared\" />
+    <Folder Include="Areas\OrderDetails\Controllers\" />
+    <Folder Include="Areas\OrderDetails\Models\" />
+    <Folder Include="Areas\OrderDetails\Views\Shared\" />
+    <Folder Include="Areas\OrderNumbers\Controllers\" />
+    <Folder Include="Areas\OrderNumbers\Models\" />
+    <Folder Include="Areas\OrderNumbers\Views\Shared\" />
+    <Folder Include="Areas\Orders\Controllers\" />
+    <Folder Include="Areas\Orders\Models\" />
+    <Folder Include="Areas\Orders\Views\Shared\" />
+    <Folder Include="Areas\Products\Controllers\" />
+    <Folder Include="Areas\Products\Models\" />
+    <Folder Include="Areas\Products\Views\Shared\" />
+    <Folder Include="Areas\Ratings\Controllers\" />
+    <Folder Include="Areas\Ratings\Models\" />
+    <Folder Include="Areas\Ratings\Views\Shared\" />
+    <Folder Include="Areas\Settings\Controllers\" />
+    <Folder Include="Areas\Settings\Models\" />
+    <Folder Include="Areas\Settings\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
