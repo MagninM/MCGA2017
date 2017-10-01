@@ -42,8 +42,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Responses\AllCartItemResponse.cs" />
+    <Compile Include="Responses\AllCartResponse.cs" />
     <Compile Include="Responses\AllCategoryResponse.cs" />
+    <Compile Include="Responses\AllClientResponse.cs" />
+    <Compile Include="Responses\AllCountryResponse.cs" />
+    <Compile Include="Responses\AllDealerResponse.cs" />
+    <Compile Include="Responses\AllOrderDetailResponse.cs" />
+    <Compile Include="Responses\AllOrderNumberResponse.cs" />
+    <Compile Include="Responses\AllOrderResponse.cs" />
+    <Compile Include="Responses\AllProductResponse.cs" />
+    <Compile Include="Responses\AllRatingResponse.cs" />
+    <Compile Include="Responses\AllSettingResponse.cs" />
+    <Compile Include="Responses\FindCartItemResponse.cs" />
+    <Compile Include="Responses\FindCartResponse.cs" />
     <Compile Include="Responses\FindCategoryResponse.cs" />
+    <Compile Include="Responses\FindClientResponse.cs" />
+    <Compile Include="Responses\FindCountryResponse.cs" />
+    <Compile Include="Responses\FindDealerResponse.cs" />
+    <Compile Include="Responses\FindOrderDetailResponse.cs" />
+    <Compile Include="Responses\FindOrderNumberResponse.cs" />
+    <Compile Include="Responses\FindOrderResponse.cs" />
+    <Compile Include="Responses\FindProductResponse.cs" />
+    <Compile Include="Responses\FindRatingResponse.cs" />
+    <Compile Include="Responses\FindSettingResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\ASF.Entities\ASF.Entities.csproj">

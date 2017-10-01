@@ -10,6 +10,8 @@ using System.Web;
 using ASF.Entities;
 using ASF.Services.Contracts;
 using ASF.UI.Process;
+using ASF.Services.Contracts.Responses;
+
 namespace ASF.UI.Process
 {
     public class RatingProcess : ProcessComponent
@@ -21,7 +23,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public List<Rating> SelectList()
         {
-            var response = HttpGet<AllResponseRating>("rest/Rating/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllRatingResponse>("rest/Rating/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
@@ -31,8 +33,9 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public Rating Find(int id)
         {
-            var path = "rest/Rating/Find/" + id;
-            var response = HttpGet<FindResponseRating>(path, new Dictionary<string, object>(), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<FindRatingResponse>("rest/Rating/Find", parameters, MediaType.Json);
             return response.Result;
         }
 
@@ -51,8 +54,9 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Delete(int id)
         {
-            var path = "rest/Rating/Remove/" + id;
-            var response = HttpGet<FindResponseRating>(path, new Dictionary<string, object>(), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            HttpGet<FindRatingResponse>("rest/Rating/Remove", parameters, MediaType.Json);
         }
 
         /// <summary>

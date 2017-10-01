@@ -10,6 +10,7 @@ using System.Web;
 using ASF.Entities;
 using ASF.Services.Contracts;
 using ASF.UI.Process;
+using ASF.Services.Contracts.Responses;
 
 namespace ASF.UI.Process
 {
@@ -22,7 +23,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public List<Dealer> SelectList()
         {
-            var response = HttpGet<AllResponseDealer>("rest/Dealer/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllDealerResponse>("rest/Dealer/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
@@ -32,8 +33,9 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public Dealer Find(int id)
         {
-            var path = "rest/Dealer/Find/" + id;
-            var response = HttpGet<FindResponseDealer>(path, new Dictionary<string, object>(), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<FindDealerResponse>("rest/Dealer/Find", parameters, MediaType.Json);
             return response.Result;
         }
 
@@ -52,8 +54,9 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Delete(int id)
         {
-            var path = "rest/Dealer/Remove/" + id;
-            var response = HttpGet<FindResponseDealer>(path, new Dictionary<string, object>(), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            HttpGet<FindDealerResponse>("rest/Dealer/Remove", parameters, MediaType.Json);
         }
 
         /// <summary>

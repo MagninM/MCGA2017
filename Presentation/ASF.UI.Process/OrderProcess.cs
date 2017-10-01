@@ -10,6 +10,7 @@ using System.Web;
 using ASF.Entities;
 using ASF.Services.Contracts;
 using ASF.UI.Process;
+using ASF.Services.Contracts.Responses;
 
 namespace ASF.UI.Process
 {
@@ -22,7 +23,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public List<Order> SelectList()
         {
-            var response = HttpGet<AllResponseOrder>("rest/Order/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllOrderResponse>("rest/Order/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
@@ -32,8 +33,9 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public Order Find(int id)
         {
-            var path = "rest/Order/Find/" + id;
-            var response = HttpGet<FindResponseOrder>(path, new Dictionary<string, object>(), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<FindOrderResponse>("rest/Order/Find", parameters, MediaType.Json);
             return response.Result;
         }
 
@@ -52,8 +54,9 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Delete(int id)
         {
-            var path = "rest/Order/Remove/" + id;
-            var response = HttpGet<FindResponseOrder>(path, new Dictionary<string, object>(), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            HttpGet<FindOrderResponse>("rest/Order/Remove", parameters, MediaType.Json);
         }
 
         /// <summary>

@@ -10,6 +10,8 @@ using System.Web;
 using ASF.Entities;
 using ASF.Services.Contracts;
 using ASF.UI.Process;
+using ASF.Services.Contracts.Responses;
+
 
 namespace ASF.UI.Process
 {
@@ -22,7 +24,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public List<OrderNumber> SelectList()
         {
-            var response = HttpGet<AllResponseOrderNumber>("rest/OrderNumber/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllOrderNumberResponse>("rest/OrderNumber/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
@@ -32,8 +34,9 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public OrderNumber Find(int id)
         {
-            var path = "rest/OrderNumber/Find/" + id;
-            var response = HttpGet<FindResponseOrderNumber>(path, new Dictionary<string, object>(), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<FindOrderNumberResponse>("rest/OrderNumber/Find", parameters, MediaType.Json);
             return response.Result;
         }
 
@@ -52,8 +55,9 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Delete(int id)
         {
-            var path = "rest/OrderNumber/Remove/" + id;
-            var response = HttpGet<FindResponseOrderNumber>(path, new Dictionary<string, object>(), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            HttpGet<FindOrderNumberResponse>("rest/OrderNumber/Remove", parameters, MediaType.Json);
         }
 
         /// <summary>

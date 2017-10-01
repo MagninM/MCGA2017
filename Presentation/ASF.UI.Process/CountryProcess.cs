@@ -10,6 +10,7 @@ using System.Web;
 using ASF.Entities;
 using ASF.Services.Contracts;
 using ASF.UI.Process;
+using ASF.Services.Contracts.Responses;
 
 namespace ASF.UI.Process
 {
@@ -22,7 +23,7 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public List<Country> SelectList()
         {
-            var response = HttpGet<AllResponseCountry>("rest/Country/All", new Dictionary<string, object>(), MediaType.Json);
+            var response = HttpGet<AllCountryResponse>("rest/Country/All", new Dictionary<string, object>(), MediaType.Json);
             return response.Result;
         }
 
@@ -32,8 +33,9 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public Country Find(int id)
         {
-            var path = "rest/Country/Find/" + id;
-            var response = HttpGet<FindResponseCountry>(path, new Dictionary<string, object>(), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<FindCountryResponse>("rest/Country/Find", parameters, MediaType.Json);
             return response.Result;
         }
 
@@ -52,8 +54,9 @@ namespace ASF.UI.Process
         /// <returns></returns>
         public void Delete(int id)
         {
-            var path = "rest/Country/Remove/" + id;
-            var response = HttpGet<FindResponseCountry>(path, new Dictionary<string, object>(), MediaType.Json);
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            HttpGet<FindCountryResponse>("rest/Country/Remove", parameters, MediaType.Json);
         }
 
         /// <summary>
