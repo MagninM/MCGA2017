@@ -24,12 +24,19 @@ namespace ASF.UI.WbSite.Areas.Clients.Controllers
             var cp = new ClientProcess();
             var client = cp.Find(id);
 
+            var cp2 = new CountryProcess();
+            var CountryName = cp2.Find(client.CountryId);
+            ViewData["Country"] = CountryName.Name;
+
             return View(client);
         }
 
         // GET: Clients/Create
         public ActionResult Create()
         {
+            var cp = new CountryProcess();
+            var lista = cp.SelectList();
+            ViewData["Country"] = lista;
             return View();
         }
 
@@ -55,6 +62,10 @@ namespace ASF.UI.WbSite.Areas.Clients.Controllers
         {
             var cp = new ClientProcess();
             var cat = cp.Find(id);
+
+            var cp2 = new CountryProcess();
+            var lista = cp2.SelectList();
+            ViewData["Country"] = lista;
 
             return View(cat);
         }
