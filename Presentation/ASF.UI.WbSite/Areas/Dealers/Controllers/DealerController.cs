@@ -15,6 +15,15 @@ namespace ASF.UI.WbSite.Areas.Dealers.Controllers
         {
             var dp = new DealerProcess();
             var lista = dp.SelectList();
+
+            var cp = new CountryProcess();
+            var listaCountry = cp.SelectList();
+            ViewData["Country"] = listaCountry;
+
+            var cp2 = new CategoryProcess();
+            var listaCategory = cp2.SelectList();
+            ViewData["Category"] = listaCategory;
+
             return View(lista);
         }
 
@@ -22,14 +31,30 @@ namespace ASF.UI.WbSite.Areas.Dealers.Controllers
         public ActionResult Details(int id)
         {
             var dp = new DealerProcess();
-            var pais = dp.Find(id);
+            var dealer = dp.Find(id);
 
-            return View(pais);
+            var cp = new CountryProcess();
+            var descCountry = cp.Find(dealer.CountryId);
+            ViewData["Country"] = descCountry.Name;
+
+            var cp2 = new CategoryProcess();
+            var descCategory = cp2.Find(dealer.CategoryId);
+            ViewData["Category"] = descCategory.Name;
+
+            return View(dealer);
         }
 
         // GET: Dealers/Create
         public ActionResult Create()
         {
+            var cp = new CountryProcess();
+            var listaCountry = cp.SelectList();
+            ViewData["Country"] = listaCountry;
+
+            var cp2 = new CategoryProcess();
+            var listaCategory = cp2.SelectList();
+            ViewData["Category"] = listaCategory;
+
             return View();
         }
 
@@ -55,6 +80,14 @@ namespace ASF.UI.WbSite.Areas.Dealers.Controllers
         {
             var dp = new DealerProcess();
             var dealer = dp.Find(id);
+
+            var cp = new CountryProcess();
+            var listaCountry = cp.SelectList();
+            ViewData["Country"] = listaCountry;
+
+            var cp2 = new CategoryProcess();
+            var listaCategory = cp2.SelectList();
+            ViewData["Category"] = listaCategory;
 
             return View(dealer);
         }

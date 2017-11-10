@@ -1,7 +1,11 @@
 ﻿@model IEnumerable<ASF.Entities.Dealer>
+@using ASF.Entities
 
 @{
     ViewBag.Title = "Index";
+}
+@{ var Country = "Country";
+   var Category = "Category";
 }
 
 <h2>Index</h2>
@@ -29,25 +33,25 @@
         <th>
             @Html.DisplayNameFor(model => model.TotalProducts)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rowid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChangedOn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChangedBy)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
+    foreach (var std in ViewData["Country"] as IList<Country>)
+    {
+        if (std.Id == item.CountryId) {
+            Country = std.Name;
+            break;
+        }
+    }
+    foreach (var std in ViewData["Category"] as IList<Category>)
+    {
+        if (std.Id == item.CategoryId)
+        {
+            Category = std.Name;
+            break;
+        }
+    }
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
@@ -56,31 +60,16 @@
             @Html.DisplayFor(modelItem => item.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CategoryId)
+            @Html.DisplayFor(modelItem => Category)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CountryId)
+            @Html.DisplayFor(modelItem => Country)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TotalProducts)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rowid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChangedOn)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChangedBy)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

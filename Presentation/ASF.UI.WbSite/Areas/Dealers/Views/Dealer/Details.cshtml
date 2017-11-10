@@ -1,7 +1,13 @@
-﻿@model ASF.Entities.Dealer
+﻿@using ASF.Entities
+@model ASF.Entities.Dealer
 
 @{
     ViewBag.Title = "Details";
+}
+@{  var Country = ViewData["Country"];
+    var country = "Country";
+    var Category = ViewData["Category"];
+    var category = "Category";
 }
 
 <h2>Details</h2>
@@ -27,19 +33,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CategoryId)
+            @Html.DisplayNameFor(model => category)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CategoryId)
+            @Html.DisplayFor(model => Category)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CountryId)
+            @Html.DisplayNameFor(model => country)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CountryId)
+            @Html.DisplayFor(model => Country)
         </dd>
 
         <dt>
@@ -56,46 +62,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.TotalProducts)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Rowid)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Rowid)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedOn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ChangedOn)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ChangedOn)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ChangedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ChangedBy)
         </dd>
 
     </dl>
