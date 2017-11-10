@@ -15,6 +15,11 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
         {
             var pp = new ProductProcess();
             var lista = pp.SelectList();
+
+            var dp = new DealerProcess();
+            var listadealer = dp.SelectList();
+            ViewData["Dealer"] = listadealer;
+
             return View(lista);
         }
 
@@ -24,12 +29,20 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
             var pp = new ProductProcess();
             var prd = pp.Find(id);
 
+            var dp = new DealerProcess();
+            var nameDealer = dp.Find(prd.DealerId);
+            ViewData["Dealer"] = nameDealer.FirstName + " " + nameDealer.LastName;
+
             return View(prd);
         }
 
         // GET: Products/Create
         public ActionResult Create()
         {
+            var dp = new DealerProcess();
+            var listadealer = dp.SelectList();
+            ViewData["Dealer"] = listadealer;
+
             return View();
         }
 
@@ -55,6 +68,10 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
         {
             var pp = new ProductProcess();
             var prd = pp.Find(id);
+
+            var dp = new DealerProcess();
+            var listadealer = dp.SelectList();
+            ViewData["Dealer"] = listadealer;
 
             return View(prd);
         }

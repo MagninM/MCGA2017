@@ -15,6 +15,11 @@ namespace ASF.UI.WbSite.Areas.Clients.Controllers
         {
             var cp = new ClientProcess();
             var lista = cp.SelectList();
+
+            var cp2 = new CountryProcess();
+            var listaCountry = cp2.SelectList();
+            ViewData["Country"] = listaCountry;
+
             return View(lista);
         }
 

@@ -34,12 +34,12 @@ namespace ASF.UI.WbSite.Areas.Dealers.Controllers
             var dealer = dp.Find(id);
 
             var cp = new CountryProcess();
-            var descCountry = cp.Find(dealer.CountryId);
-            ViewData["Country"] = descCountry.Name;
+            var nameCountry = cp.Find(dealer.CountryId);
+            ViewData["Country"] = nameCountry.Name;
 
             var cp2 = new CategoryProcess();
-            var descCategory = cp2.Find(dealer.CategoryId);
-            ViewData["Category"] = descCategory.Name;
+            var nameCategory = cp2.Find(dealer.CategoryId);
+            ViewData["Category"] = nameCategory.Name;
 
             return View(dealer);
         }

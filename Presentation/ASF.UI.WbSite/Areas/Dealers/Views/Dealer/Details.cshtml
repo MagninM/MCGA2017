@@ -3,11 +3,8 @@
 
 @{
     ViewBag.Title = "Details";
-}
-@{  var Country = ViewData["Country"];
-    var country = "Country";
+    var Country = ViewData["Country"];
     var Category = ViewData["Category"];
-    var category = "Category";
 }
 
 <h2>Details</h2>
@@ -33,7 +30,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => category)
+            Category
         </dt>
 
         <dd>
@@ -41,7 +38,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => country)
+            Country
         </dt>
 
         <dd>

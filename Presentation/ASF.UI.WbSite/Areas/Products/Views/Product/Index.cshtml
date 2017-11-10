@@ -1,7 +1,9 @@
 ﻿@model IEnumerable<ASF.Entities.Product>
+@using ASF.Entities
 
 @{
     ViewBag.Title = "Index";
+    var Dealer = "Dealer";
 }
 
 <h2>Index</h2>
@@ -32,13 +34,18 @@
         <th>
             @Html.DisplayNameFor(model => model.AvgStars)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rowid)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
+    foreach (var std in ViewData["Dealer"] as IList<Dealer>)
+    {
+        if (std.Id == item.DealerId)
+        {
+            Dealer = std.FirstName + " " + std.LastName;
+            break;
+        }
+    }
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Title)
@@ -47,7 +54,7 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DealerId)
+            @Html.DisplayFor(modelItem => Dealer)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Image)
@@ -60,9 +67,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AvgStars)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rowid)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

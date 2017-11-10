@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Details";
+    var Dealer = ViewData["Dealer"];
 }
 
 <h2>Details</h2>
@@ -27,11 +28,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DealerId)
+            Dealer
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DealerId)
+            @Html.DisplayFor(model => Dealer)
         </dd>
 
         <dt>
