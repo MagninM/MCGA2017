@@ -73,5 +73,11 @@ namespace ASF.Business
             productDac.UpdateById(product);
         }
 
+        public List<Product> SelectByCat(int id)
+        {
+            var productDac = new ProductDAC();
+            var result = productDac.SelectByCat(id);
+            return result;
+        }
     }
 }

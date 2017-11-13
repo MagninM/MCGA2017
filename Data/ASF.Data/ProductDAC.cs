@@ -79,6 +79,28 @@ namespace ASF.Data
             }
         }
 
+        public List<Product> SelectByCat(int id)
+        {
+            // WARNING! Performance
+            const string sqlStatement = "SELECT PRO.Id, PRO.Title, PRO.Description, PRO.DealerId, PRO.Image, PRO.Price, PRO.QuantitySold, PRO.AvgStars, PRO.Rowid, PRO.CreatedOn, PRO.CreatedBy, PRO.ChangedOn, PRO.ChangedBy FROM dbo.Product as PRO INNER JOIN dbo.dealer as DEA ON PRO.DealerId = DEA.Id WHERE DEA.CategoryID=@Id";
+            var result = new List<Product>();
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                db.AddInParameter(cmd, "@id", DbType.Int32, id);
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        var product = LoadProduct(dr); // Mapper
+                        result.Add(product);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>

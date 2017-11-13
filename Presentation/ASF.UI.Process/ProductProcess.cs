@@ -27,6 +27,14 @@ namespace ASF.UI.Process
             return response.Result;
         }
 
+        public List<Product> SelectByCat(int id)
+        {
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("id", id);
+            var response = HttpGet<AllProductResponse>("rest/Product/SelectByCat", parameters, MediaType.Json);
+            return response.Result;
+        }
+
         /// <summary>
         /// 
         /// </summary>
