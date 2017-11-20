@@ -39,7 +39,7 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
         }
 
         // GET: Products/Create
-        [Authorize(Roles = "Administradores")]
+        //[Authorize(Roles = "Administradores")]
         public ActionResult Create()
         {
             var dp = new DealerProcess();
@@ -49,15 +49,34 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
             return View();
         }
 
+
         [HttpPost]
         // POST: Products/Create
-        [Authorize(Roles = "Administradores")]
-        public ActionResult Create(Product prd)
+        //[Authorize(Roles = "Administradores")]
+        public ActionResult Create(Product prd, HttpPostedFileBase Image)
         {
+
+            if (Image != null)
+            {
+                string pic = System.IO.Path.GetFileName(Image.FileName);
+                string path = System.IO.Path.Combine(Server.MapPath("~/Uploads"));
+
+                //string path = "C:\\Users\\magnin\\Documents\\Maxi";
+                //string path = "D:\\jpg";
+                //Upload file
+                Image.SaveAs(path+"\\"+pic);
+
+                //Save Path on Database
+                prd.Image = path + "\\" + pic;
+            }
+            
+
             var pp = new ProductProcess();
             pp.Insert(prd);
             return RedirectToAction("Index");
         }
+
+
 
         // GET: Products/Delete
         [Authorize(Roles = "Administradores")]
@@ -93,35 +112,35 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
         }
 
         //// GET: Products/Product
-        //public ActionResult ProductList()
-        //{
-        //    var pp = new ProductProcess();
-        //    var lista = pp.SelectList();
-
-        //    //var dp = new DealerProcess();
-        //    //var listadealer = dp.SelectList();
-        //    //ViewData["Dealer"] = listadealer;
-
-        //    var cp2 = new CategoryProcess();
-        //    var listaCategory = cp2.SelectList();
-        //    ViewData["Category"] = listaCategory;
-
-        //    return View(lista);
-        //}
-
         public ActionResult ProductList(int Category = -1)
         {
 
             var cp = new CategoryProcess();
             var pp = new ProductProcess();
+
             ViewData["Category"] = cp.SelectList();
             var lista = new List<Product>();
+
             if (Category > -1)
                 lista = pp.SelectByCat(Category);
 
-            //var lista = DataCache.Instance.CategoryList();
             return View(lista);
+        }
 
+        public ActionResult FileUpload(HttpPostedFileBase file)
+        {
+            if (file != null)
+            {
+                string pic = System.IO.Path.GetFileName(file.FileName);
+                string path = System.IO.Path.Combine(Server.MapPath("~/Uploads"));
+
+                //Upload file
+                file.SaveAs(path);
+
+                //Save Path on Database
+
+            }
+            return RedirectToAction("Index");
         }
 
     }

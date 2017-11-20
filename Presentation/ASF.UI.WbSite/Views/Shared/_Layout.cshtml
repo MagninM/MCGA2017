@@ -11,7 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @* title - The title of the page which appears in the browser window title. Aim for the title to be less than 70
         characters. The site name appears at the end for better SEO. *@
-    <title>@ViewBag.Title - @Application.Name</title>
+    @*<title>@ViewBag.Title - @Application.Name</title>*@
+    <title>LeatherGoods</title>
 
 
     @* Icons & Platform Specific Settings (See http://rehansaeed.com/internet-favicon-madness/ for detailed
@@ -168,9 +169,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="@Url.RouteUrl(HomeControllerRoute.GetAbout)"><span aria-hidden="true" class="fa fa-users"></span> About</a></li>
+                    @*<li><a href="@Url.RouteUrl(HomeControllerRoute.GetAbout)"><span aria-hidden="true" class="fa fa-users"></span> About</a></li>
                     <li><a href="@Url.RouteUrl(HomeControllerRoute.GetContact)"><span aria-hidden="true" class="fa fa-phone"></span> Contact</a></li>
-                    <li><a href="@Url.RouteUrl(HomeControllerRoute.GetFeed)"><span aria-hidden="true" class="fa fa-rss"></span> RSS</a></li>
+                    <li><a href="@Url.RouteUrl(HomeControllerRoute.GetFeed)"><span aria-hidden="true" class="fa fa-rss"></span> RSS</a></li>*@
+                    <li>@Html.ActionLink("Lista Productos", "ProductList", "Product", new { Area = "Products" }, null)</li>
+                    <li>@Html.ActionLink("Productos", "Index", "Product", new { Area = "Products" }, null)</li>
+                    <li>@Html.ActionLink("Categorias", "Index", "Category", new { Area = "Categories" }, null)</li>
+                    <li>@Html.ActionLink("Clientes", "Index", "Client", new { Area = "Clients" }, null)</li>
+                    <li>@Html.ActionLink("Vendedor", "Index", "Dealer", new { Area = "Dealers" }, null)</li>
+                    <li>@Html.ActionLink("Paises", "Index", "Country", new { Area = "Countries" }, null)</li>
                     @if (HttpContext.Current.IsDebuggingEnabled)
                     {
                         // if <compilation debug="true"> is set in Web.config.

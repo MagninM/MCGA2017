@@ -536,6 +536,7 @@
     <None Include="NWebsecConfig\HttpHeaderSecurityModuleConfig.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\PublishProfiles\Maxi.pubxml" />
     <None Include="ReadMe.html" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\gridmvc.js" />
@@ -699,6 +700,7 @@
     <Folder Include="Areas\Products\Models\" />
     <Folder Include="Areas\Ratings\Models\" />
     <Folder Include="Areas\Settings\Models\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
