@@ -137,5 +137,30 @@ namespace ASF.Services.Http
             }
         }
 
+
+        [HttpGet]
+        [Route("FindByCookie")]
+        public FindCartResponse FindByCookie()
+        {
+            try
+            {
+                var cookie = Request.Headers.GetCookies("cart")[0];
+                var response = new FindCartResponse();
+                var bc = new CartBusiness();
+                response.Result = bc.FindByCookie(cookie["cart"].Value);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
+
     }
 }

@@ -28,9 +28,37 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
         }
 
         // GET: CartsItem/Create
-        public ActionResult Create()
+        [Authorize]
+        public ActionResult Create(int id)
         {
-            return View();
+            var cookie = Request.Cookies[".AspNet.ApplicationCookie"].Value;
+            var cp = new CartProcess();
+            var cart = cp.Cookie(cookie);
+            if (cart == null)
+            {
+                cp.Insert(new Cart()
+                {
+                    CartDate = DateTime.Now,
+                    Cookie = cookie
+                });
+                cart = cp.Cookie(cookie);
+            }
+            var pp = new ProductProcess();
+            var prd = pp.Find(id);
+            ViewBag.Descripcion = prd.Description;
+            ViewBag.Nombre = prd.Title;
+            ViewBag.Imagen = prd.Image;
+            ViewBag.Precio = prd.Price;
+            ViewBag.ProductId = id;
+
+            var item = new CartItem();
+            item.CartId = cart.Id;
+            item.ProductId = id;
+            item.Price = prd.Price;
+            item.Quantity = 1;
+
+
+            return View(item);
         }
 
         [HttpPost]
@@ -39,7 +67,7 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
         {
             var cp = new CartItemProcess();
             cp.Insert(cartItem);
-            return RedirectToAction("Index");
+            return RedirectToAction("ProductList","Product", new { area = "Products" });
         }
 
         // GET: CartsItem/Delete
@@ -67,6 +95,8 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
             cp.Edit(cartItem);
             return RedirectToAction("Index");
         }
+
+
 
     }
 }

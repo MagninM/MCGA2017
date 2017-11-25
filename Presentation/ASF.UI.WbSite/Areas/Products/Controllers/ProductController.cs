@@ -112,6 +112,7 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
         }
 
         //// GET: Products/Product
+        //[Authorize]
         public ActionResult ProductList(int Category = -1)
         {
 
@@ -120,27 +121,12 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
 
             ViewData["Category"] = cp.SelectList();
             var lista = new List<Product>();
+            ViewBag.Cantidad = 2;
 
             if (Category > -1)
                 lista = pp.SelectByCat(Category);
 
             return View(lista);
-        }
-
-        public ActionResult FileUpload(HttpPostedFileBase file)
-        {
-            if (file != null)
-            {
-                string pic = System.IO.Path.GetFileName(file.FileName);
-                string path = System.IO.Path.Combine(Server.MapPath("~/Uploads"));
-
-                //Upload file
-                file.SaveAs(path);
-
-                //Save Path on Database
-
-            }
-            return RedirectToAction("Index");
         }
 
     }

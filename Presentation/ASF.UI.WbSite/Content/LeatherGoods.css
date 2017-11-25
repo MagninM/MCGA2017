@@ -1,0 +1,119 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+h4 {
+    font-weight: 600;
+}
+
+p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.price {
+    font-size: 30px;
+    margin: 0 auto;
+    color: #333;
+}
+
+.right {
+    float: right;
+    border-bottom: 2px solid #4B8E4B;
+}
+
+.thumbnail {
+    opacity: 0.70;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+    .thumbnail:hover {
+        opacity: 1.00;
+        box-shadow: 0px 0px 10px #4bc6ff;
+    }
+
+.line {
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 770px) {
+    .right {
+        float: left;
+        width: 100%;
+    }
+}
+
+img.img-src {
+    max-height: 90px;
+    overflow: hidden;
+   
+
+}
+
+img.img-src-list {
+    max-height: 60px;
+    max-width: 110px;
+    overflow: hidden;
+}
+
+form {
+    margin-left:20%;
+    margin-right:20%;
+}
+
+.cart-box{
+     position: fixed;
+  bottom: 40px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  z-index: 2147483000;
+  cursor: pointer;
+  background-position: 50%;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+.cart-items-count{
+    position:relative;
+    display:flex;
+    text-align:center;
+    justify-content: center;
+    top:-55px;
+}
+
+.notification-counter {   
+    position: absolute;
+    left: 8px;
+    background-color: rgba(212, 19, 13, 1);
+    color: #fff;
+    border-radius: 3px;
+    padding: 1px 3px;
+    font: 8px Verdana;
+}

@@ -48,6 +48,14 @@ namespace ASF.UI.Process
             var response = HttpPost<Cart>("rest/Cart/Add", cart, MediaType.Json);
         }
 
+        public Cart Cookie(string cookie)
+        {
+            var path = "rest/Cart/FindByCookie";
+            var clase = "cart";
+            var response = HttpGet<FindCartResponse>(path, MediaType.Json, cookie, clase);
+            return response.Result;
+        }
+
         /// <summary>
         /// 
         /// </summary>

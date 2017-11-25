@@ -432,6 +432,7 @@
     <Content Include="Areas\Categories\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Categories\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Categories\Views\Category\Index.cshtml" />
+    <Content Include="Content\LeatherGoods.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -637,6 +638,8 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\site.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Uploads\2.jpg" />
+    <Content Include="Views\2.jpg" />
     <Content Include="Views\Error\BadRequest.cshtml" />
     <Content Include="Views\Error\InternalServerError.cshtml" />
     <Content Include="Web.config">
@@ -700,7 +703,6 @@
     <Folder Include="Areas\Products\Models\" />
     <Folder Include="Areas\Ratings\Models\" />
     <Folder Include="Areas\Settings\Models\" />
-    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">

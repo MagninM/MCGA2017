@@ -74,5 +74,18 @@ namespace ASF.Business
             cartDac.UpdateById(cart);
         }
 
+
+        /// <summary>
+        /// Find method.
+        /// </summary>
+        /// <param name="cookie"></param>
+        /// <returns></returns>
+        public Cart FindByCookie(string cookie)
+        {
+            var cartDac = new CartDAC();
+            var result = cartDac.FindByCookie(cookie);
+            return result;
+        }
+
     }
 }

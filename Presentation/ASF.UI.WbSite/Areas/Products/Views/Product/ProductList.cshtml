@@ -7,6 +7,7 @@
 <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"> </script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 <link href="@Url.Content("~/Content/Css/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+<link href="~/Content/LeatherGoods.css" rel="stylesheet" />
 
 @{
     ViewBag.Title = "ProductList";
@@ -37,21 +38,25 @@
 }
 
 
-@using (Html.BeginForm("Create", "CartController", FormMethod.Post))
-{
+@*@using (Html.BeginForm("Create", "CartController", FormMethod.Post))
+{*@
 @Html.Grid(Model).Columns(columns =>
 {
+columns.Add()
+    .Titled("Img")
+    .Sanitized(false)
+    .Encoded(false)
+    .SetWidth(110)
+    .RenderValueAs(model => new HtmlString
+        (
+       //"<img src=\"http://localhost:24005/Uploads/2.jpg\" alt=\"...\" class=\"img-responsive\"/>"
+       //"<img src=\"http://localhost:24005/Uploads/2.jpg\" alt=\"...\" class=\"img-src-list\"/>"
+       "<img class=\"img-src-list\" src=\"/Uploads/" + @Url.Content(model.Image) + "\" alt=\"...\">")
+        //"<p>" + model.Image + "</p>"
+        
+        );
     columns.Add(foo => foo.Title).Sortable(true).Filterable(true).SetWidth(110);
     columns.Add(foo => foo.Description).Sortable(true).Filterable(true);
-    columns.Add()
-        .Titled("Img")
-        .Sanitized(false)
-        .Encoded(false)
-        .RenderValueAs(model => new HtmlString
-            (
-                "<p>" + model.Image + "</p>"
-            )
-        );
     columns.Add(foo => foo.Price).Sortable(true).Filterable(true);
     columns.Add()
        .Titled("Accion")
@@ -59,10 +64,8 @@
        .Encoded(false)
        .RenderValueAs(model => new HtmlString
            (
-               "<button class=\"btn - primary\">Comprar</button>"
+               "<a href=\"/CartItems/CartItem/Create/" + model.Id + "\" class=\"btn btn-primary\">Agregar</a>"
            )
        );
 }).WithPaging(10)
-}
-
-
+@*}*@
