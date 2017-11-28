@@ -64,7 +64,7 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
                 Image.SaveAs(path+"\\"+pic);
 
                 //Save Path on Database
-                prd.Image = path + "\\" + pic;
+                prd.Image = pic;
             }
             
 
