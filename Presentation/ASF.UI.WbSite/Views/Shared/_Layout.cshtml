@@ -4,6 +4,38 @@
 @* no-js - The no JavaScript class is removed by modernizr if JavaScript is available. *@
 <html class="no-js" lang="en">
 <head @(ViewBag.OpenGraph == null ? null : Html.OpenGraphNamespace((OpenGraphMetadata)ViewBag.OpenGraph))>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109945658-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-110321333-1');
+    </script>
+
+    <script type="application/ld+json">
+        {
+        <div itemscope itemtype="http://schema.org/Blog">
+        </div>
+        "name" : "MCGA",
+        "url" : "http://mcgamagnin.ddns.net",
+        "sameAs" : [
+        "https://twitter.com/woorank",
+        "https://plus.google.com/+woorank",
+        "https://www.facebook.com/woorank",
+        "https://foursquare.com/v/woorank/4e296473149554c77442cc98",
+        "http://www.yelp.com/biz/your-business-url-from-yelp",
+        "https://www.youtube.com/user/MTVUKofficial",
+        "https://www.linkedin.com/company/facebook/",
+        "https://www.instagram.com/microsoft/"
+        ]
+        }
+    </script> 
+
+
+
     @* The order of the tags in the head is important for best performance and compatibility. *@
     @* charset - The character encoding of the document. *@
     <meta charset="utf-8">
@@ -173,11 +205,15 @@
                     <li><a href="@Url.RouteUrl(HomeControllerRoute.GetContact)"><span aria-hidden="true" class="fa fa-phone"></span> Contact</a></li>
                     <li><a href="@Url.RouteUrl(HomeControllerRoute.GetFeed)"><span aria-hidden="true" class="fa fa-rss"></span> RSS</a></li>*@
                     <li>@Html.ActionLink("Lista Productos", "ProductList", "Product", new { Area = "Products" }, null)</li>
-                    <li>@Html.ActionLink("Productos", "Index", "Product", new { Area = "Products" }, null)</li>
-                    <li>@Html.ActionLink("Categorias", "Index", "Category", new { Area = "Categories" }, null)</li>
-                    <li>@Html.ActionLink("Clientes", "Index", "Client", new { Area = "Clients" }, null)</li>
-                    <li>@Html.ActionLink("Vendedor", "Index", "Dealer", new { Area = "Dealers" }, null)</li>
-                    <li>@Html.ActionLink("Paises", "Index", "Country", new { Area = "Countries" }, null)</li>
+                    
+                    @if (User.Identity.Name == "admin@asf.com" || User.Identity.Name == "maximiliano.magnin@hotmail.com")
+                    {
+                        <li>@Html.ActionLink("Productos", "Index", "Product", new { Area = "Products" }, null)</li>
+                        <li>@Html.ActionLink("Categorias", "Index", "Category", new { Area = "Categories" }, null)</li>
+                        <li>@Html.ActionLink("Clientes", "Index", "Client", new { Area = "Clients" }, null)</li>
+                        <li>@Html.ActionLink("Vendedor", "Index", "Dealer", new { Area = "Dealers" }, null)</li>
+                        <li>@Html.ActionLink("Paises", "Index", "Country", new { Area = "Countries" }, null)</li>
+                    }
                     @if (HttpContext.Current.IsDebuggingEnabled)
                     {
                         // if <compilation debug="true"> is set in Web.config.

@@ -27,7 +27,24 @@ namespace ASF.Business
         public Order Add(Order order)
         {
             var orderDac = new OrderDAC();
-            return orderDac.Create(order);
+            var neworder = new Order();
+            neworder = orderDac.Create(order);
+
+            var cartbusi = new CartItemBusiness();
+            var lista = cartbusi.FindByCartId(neworder.OrderNumber);
+
+            var odb = new OrderDetailBusiness();
+
+            foreach (CartItem item in lista)
+            {
+                var od = new OrderDetail();
+                od.OrderId = neworder.Id;
+                od.ProductId = item.ProductId;
+                od.Price = item.Price;
+                od.Quantity = item.Quantity;
+                odb.Add(od);
+            }
+            return neworder;
         }
 
         /// <summary>
@@ -73,5 +90,11 @@ namespace ASF.Business
             orderDac.UpdateById(order);
         }
 
+        public Order FindByOrder(int order)
+        {
+            var orderDac = new OrderDAC();
+            var result = orderDac.SelectByOrder(order);
+            return result;
+        }
     }
 }

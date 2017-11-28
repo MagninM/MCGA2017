@@ -83,6 +83,25 @@ namespace ASF.Data
             }
         }
 
+        public Client SelectByASPUSER(string aspuser)
+        {
+            const string sqlStatement = "SELECT [Id], [FirstName], [LastName], [Email], [CountryId], [AspNetUsers], [City], [SignupDate], [Rowid], [OrderCount], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+                "FROM dbo.Client WHERE [AspNetUsers]=@ASPUSER ";
+
+            Client client = null;
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                db.AddInParameter(cmd, "@ASPUSER", DbType.String, aspuser);
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    if (dr.Read()) client = LoadClient(dr);
+                }
+            }
+
+            return client;
+        }
+
         /// <summary>
         /// 
         /// </summary>

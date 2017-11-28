@@ -114,6 +114,31 @@ namespace ASF.Services.Http
             }
         }
 
+
+        [HttpGet]
+        [Route("FindByASPUSER")]
+        public FindClientResponse FindByASPUSER(string aspuser)
+        {
+            try
+            {
+                var response = new FindClientResponse();
+                var bc = new ClientBusiness();
+                response.Result = bc.FindByASPUSER(aspuser);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
+
+
         [HttpGet]
         [Route("Remove")]
         public void Remove(int id)

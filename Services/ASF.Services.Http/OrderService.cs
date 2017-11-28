@@ -116,6 +116,29 @@ namespace ASF.Services.Http
         }
 
         [HttpGet]
+        [Route("FindByOrder")]
+        public FindOrderResponse FindByOrder(int order)
+        {
+            try
+            {
+                var response = new FindOrderResponse();
+                var bo = new OrderBusiness();
+                response.Result = bo.FindByOrder(order);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
+
+        [HttpGet]
         [Route("Remove")]
         public void Remove(int id)
         {

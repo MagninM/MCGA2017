@@ -43,9 +43,10 @@ namespace ASF.UI.Process
         /// 
         /// </summary>
         /// <returns></returns>
-        public void Insert(Order order)
+        public Order Insert(Order order)
         {
             var response = HttpPost<Order>("rest/Order/Add", order, MediaType.Json);
+            return response;
         }
 
         /// <summary>
@@ -68,5 +69,12 @@ namespace ASF.UI.Process
             var response = HttpPost<Order>("rest/Order/Edit", order, MediaType.Json);
         }
 
+        public Order FindByOrderNumber(int order)
+        {
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("order", order);
+            var response = HttpGet<FindOrderResponse>("rest/Order/FindByOrder", parameters, MediaType.Json);
+            return response.Result;
+        }
     }
 }

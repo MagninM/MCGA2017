@@ -60,9 +60,6 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
             {
                 string pic = System.IO.Path.GetFileName(Image.FileName);
                 string path = System.IO.Path.Combine(Server.MapPath("~/Uploads"));
-
-                //string path = "C:\\Users\\magnin\\Documents\\Maxi";
-                //string path = "D:\\jpg";
                 //Upload file
                 Image.SaveAs(path+"\\"+pic);
 
@@ -116,12 +113,40 @@ namespace ASF.UI.WbSite.Areas.Products.Controllers
         public ActionResult ProductList(int Category = -1)
         {
 
-            var cp = new CategoryProcess();
+
+            if (User.Identity.IsAuthenticated == true)
+            {
+                var cookie = Request.Cookies[".AspNet.ApplicationCookie"].Value;
+                var cp = new CartProcess();
+                var cart = cp.Cookie(cookie);
+                if (cart == null)
+                {
+                    ViewBag.Cantidad = 0;
+                }
+
+                else
+                {
+                    var cip = new CartItemProcess();
+                    var listaItems = cip.FindByCartId(cart.Id);
+                    var CantidadTotal = 0;
+                    foreach (CartItem item in listaItems)
+                    {
+                        CantidadTotal = CantidadTotal + item.Quantity;
+
+                    }
+                    ViewBag.Cantidad = CantidadTotal;
+                }
+            }
+            else {
+                ViewBag.Cantidad = 0;
+            }
+
+            var cp2 = new CategoryProcess();
             var pp = new ProductProcess();
 
-            ViewData["Category"] = cp.SelectList();
+            ViewData["Category"] = cp2.SelectList();
             var lista = new List<Product>();
-            ViewBag.Cantidad = 2;
+            
 
             if (Category > -1)
                 lista = pp.SelectByCat(Category);

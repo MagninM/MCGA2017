@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<ASF.Entities.CartItem>
+@using GridMvc.Html
 
 @{
     ViewBag.Title = "Index";
@@ -7,9 +8,9 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Seguir Comprando", "ProductList", "Product" ,new { Area= "Products" },null) 
 </p>
-<table class="table">
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CartId)
@@ -72,4 +73,145 @@
     </tr>
 }
 
-</table>
+</table>*@
+@*@Html.Grid(Model).Columns(columns =>
+{
+    //columns.Add()
+    //    .Titled("Img")
+    //    .Sanitized(false)
+    //    .Encoded(false)
+    //    .SetWidth(110)
+    //    .RenderValueAs(model => new HtmlString
+    //        (
+    //       "<img class=\"img-src-list\" src=\"/Uploads/" + @Url.Content(model.Image) + "\" alt=\"...\">")
+    //        );
+    columns.Add(foo => foo.CartId).Sortable(true).Filterable(true).SetWidth(110);
+    columns.Add(foo => foo.ProductId).Sortable(true).Filterable(true);
+    columns.Add(foo => foo.Price).Sortable(true).Filterable(true);
+    columns.Add(foo => foo.Quantity).Sortable(true).Filterable(true);
+    columns.Add()
+       //.Titled("Accion")
+       .Sanitized(false)
+       .Encoded(false)
+       .RenderValueAs(model => new HtmlString
+           (
+               "<a href=\"/CartItems/CartItem/Edit/" + model.Id + "\" class=\"btn btn-primary\">Editar</a>"
+           )
+       );
+    columns.Add()
+       //.Titled("Accion")
+       .Sanitized(false)
+       .Encoded(false)
+       .RenderValueAs(model => new HtmlString
+           (
+               "<a href=\"/CartItems/CartItem/Details/" + model.Id + "\" class=\"btn btn-primary\">Detalles</a>"
+           )
+       );
+    columns.Add()
+       //.Titled("Accion")
+       .Sanitized(false)
+       .Encoded(false)
+       .RenderValueAs(model => new HtmlString
+           (
+               "<a href=\"/CartItems/CartItem/Delete/" + model.Id + "\" class=\"btn btn-primary\">Eliminar</a>"
+           )
+       );
+}).WithPaging(10)*@
+
+
+<div class="grid-mvc" data-lang="en" data-gridname="" data-selectable="true" data-multiplefilters="false">
+    <div class="grid-wrap">
+        <table class="table table-striped grid-table">
+
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CartId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ProductId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreatedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ChangedOn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ChangedBy)
+                    </th>
+                    <th></th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CartId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ChangedOn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ChangedBy)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="grid-footer">
+
+        </div>
+
+    </div>
+</div>
+
+@using (Html.BeginForm("Create", "Order", new { area = "Orders" }, FormMethod.Get))
+{
+    <div class="form-group">
+        <div class="col-md-6">
+            <input type="hidden" value="@ViewBag.cartid" id="cartid" name="cartid">
+            <button class="btn btn-primary" style="background-color:darkgreen; border:darkgreen">Comprar</button>
+        </div>
+        <div class="col-md-3">
+            <p>Productos: </p>
+            <input class="form-control text-box single-line valid" value="@ViewBag.Cantidad" readonly style="width: 25%;" />
+        </div>
+        <div class="col-md-3">
+            <p>Total: </p>
+            <input class="form-control text-box single-line valid" value="@ViewBag.total" readonly style="width: 25%;" />
+        </div>
+    </div>
+}
+

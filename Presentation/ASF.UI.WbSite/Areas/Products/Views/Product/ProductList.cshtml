@@ -38,8 +38,6 @@
 }
 
 
-@*@using (Html.BeginForm("Create", "CartController", FormMethod.Post))
-{*@
 @Html.Grid(Model).Columns(columns =>
 {
 columns.Add()
@@ -49,11 +47,7 @@ columns.Add()
     .SetWidth(110)
     .RenderValueAs(model => new HtmlString
         (
-       //"<img src=\"http://localhost:24005/Uploads/2.jpg\" alt=\"...\" class=\"img-responsive\"/>"
-       //"<img src=\"http://localhost:24005/Uploads/2.jpg\" alt=\"...\" class=\"img-src-list\"/>"
        "<img class=\"img-src-list\" src=\"/Uploads/" + @Url.Content(model.Image) + "\" alt=\"...\">")
-        //"<p>" + model.Image + "</p>"
-        
         );
     columns.Add(foo => foo.Title).Sortable(true).Filterable(true).SetWidth(110);
     columns.Add(foo => foo.Description).Sortable(true).Filterable(true);
@@ -68,4 +62,3 @@ columns.Add()
            )
        );
 }).WithPaging(10)
-@*}*@

@@ -141,6 +141,36 @@ namespace ASF.Data
             return result;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// /// <param name="Cartid"></param>
+        /// <returns></returns>		
+        public List<CartItem> SelectByCartId(int CartId)
+        {
+            // WARNING! Performance
+            const string sqlStatement = "SELECT [Id], [CartId], [ProductId], [Price], [Quantity], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+                "FROM dbo.CartItem WHERE [CartId]=@CartId ";
+
+            var result = new List<CartItem>();
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                db.AddInParameter(cmd, "@CartId", DbType.Int32, CartId);
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        var cartitem = LoadCartItem(dr); // Mapper
+                        result.Add(cartitem);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// Crea un nuevo CartItem desde un Datareader.
         /// </summary>

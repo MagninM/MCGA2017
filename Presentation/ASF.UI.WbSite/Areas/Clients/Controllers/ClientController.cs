@@ -37,8 +37,10 @@ namespace ASF.UI.WbSite.Areas.Clients.Controllers
         }
 
         // GET: Clients/Create
-        public ActionResult Create()
+        public ActionResult Create(string id, string mail)
         {
+            ViewBag.Id = id;
+            ViewBag.Mail = mail;
             var cp = new CountryProcess();
             var lista = cp.SelectList();
             ViewData["Country"] = lista;
@@ -51,7 +53,7 @@ namespace ASF.UI.WbSite.Areas.Clients.Controllers
         {
             var cp = new ClientProcess();
             cp.Insert(client);
-            return RedirectToAction("Index");
+            return RedirectToAction("ProductList", "Product", new { area = "Products" });
         }
 
         // GET: Clients/Delete

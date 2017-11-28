@@ -117,6 +117,29 @@ namespace ASF.Services.Http
         }
 
         [HttpGet]
+        [Route("FindByCartId")]
+        public AllCartItemResponse FindByCartId(int Cid)
+        {
+            try
+            {
+                var response = new AllCartItemResponse();
+                var bc = new CartItemBusiness();
+                response.Result = bc.FindByCartId(Cid);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                var httpError = new HttpResponseMessage()
+                {
+                    StatusCode = (HttpStatusCode)422,
+                    ReasonPhrase = ex.Message
+                };
+
+                throw new HttpResponseException(httpError);
+            }
+        }
+
+        [HttpGet]
         [Route("Remove")]
         public void Remove(int id)
         {

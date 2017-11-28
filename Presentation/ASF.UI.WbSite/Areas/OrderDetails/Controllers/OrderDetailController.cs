@@ -13,8 +13,17 @@ namespace ASF.UI.WbSite.Areas.OrderDetails.Controllers
         // GET: OrderDetails/OrderDetail
         public ActionResult Index()
         {
-            var op = new OrderDetailProcess();
-            var lista = op.SelectList();
+            var Order = Int32.Parse(Request.Cookies["OrderNumber"].Value);
+
+            var op = new OrderProcess();
+            var orderconid = op.FindByOrderNumber(Order);
+
+            var odp = new OrderDetailProcess();
+            var lista = odp.FindeByOrderId(orderconid.Id);
+
+            var cookie = Request.Cookies[".AspNet.ApplicationCookie"].Value;
+            Response.Cookies[".AspNet.ApplicationCookie"].Value = cookie + 2;
+
             return View(lista);
         }
 

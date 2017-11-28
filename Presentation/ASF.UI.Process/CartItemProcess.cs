@@ -39,6 +39,20 @@ namespace ASF.UI.Process
             return response.Result;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<CartItem> FindByCartId(int Cid)
+        {
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("Cid", Cid);
+            var response = HttpGet<AllCartItemResponse>("rest/CartItem/FindByCartId", parameters, MediaType.Json);
+            return response.Result;
+        }
+
+
         /// <summary>
         /// 
         /// </summary>

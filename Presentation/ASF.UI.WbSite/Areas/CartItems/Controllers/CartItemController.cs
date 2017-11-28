@@ -5,16 +5,40 @@ using System.Web;
 using System.Web.Mvc;
 using ASF.UI.Process;
 using ASF.Entities;
+using Microsoft.AspNet.Identity;
 
 namespace ASF.UI.WbSite.Areas.CartItems.Controllers
 {
     public class CartItemController : Controller
     {
         // GET: CartItems/CartItem
+        [Authorize]
         public ActionResult Index()
         {
-            var cp = new CartItemProcess();
-            var lista = cp.SelectList();
+            var cookie = Request.Cookies[".AspNet.ApplicationCookie"].Value;
+            var cp = new CartProcess();
+            var cart = cp.Cookie(cookie);
+            if (cart == null)
+            {
+                //VER QUE HACER CUANDO EL CARRITO NO EXISTE
+                cart = new Cart();
+                cart.Id = 0;
+            }
+
+
+            var cip = new CartItemProcess();
+            var lista = cip.FindByCartId(cart.Id);
+            var total = 0.0;
+            var CantidadTotal = 0;
+            foreach (CartItem item in lista)
+            {
+                item.Price = item.Price * item.Quantity;
+                total = total + item.Price;
+                CantidadTotal = CantidadTotal + item.Quantity;
+            }
+            ViewBag.Cantidad = CantidadTotal;
+            ViewBag.total = total;
+            ViewBag.cartid = cart.Id;
             return View(lista);
         }
 

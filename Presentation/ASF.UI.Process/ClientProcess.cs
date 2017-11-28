@@ -39,6 +39,14 @@ namespace ASF.UI.Process
             return response.Result;
         }
 
+        public Client FindByASPUSER(string aspuser)
+        {
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("aspuser", aspuser);
+            var response = HttpGet<FindClientResponse>("rest/Client/FindByASPUSER", parameters, MediaType.Json);
+            return response.Result;
+        }
+
         /// <summary>
         /// 
         /// </summary>

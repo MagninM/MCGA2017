@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ASF.UI.Process;
 using ASF.Entities;
+using Microsoft.AspNet.Identity;
 
 namespace ASF.UI.WbSite.Areas.Orders.Controllers
 {
@@ -28,9 +29,48 @@ namespace ASF.UI.WbSite.Areas.Orders.Controllers
         }
 
         // GET: Orders/Create
-        public ActionResult Create()
+        public ActionResult Create(int cartid)
         {
-            return View();
+            //Creamos una nueva Order
+            var orderprecargada = new Order();
+
+            //Traemos el ID del cliente por el aspnetuser
+            var aspuser = User.Identity.GetUserId();
+            var cp = new ClientProcess();
+            var client = cp.FindByASPUSER(aspuser);
+
+            //Traemos todos los CartItem por el CartId
+            var cip = new CartItemProcess();
+            var lista = cip.FindByCartId(cartid);
+            var total = 0.0;
+            var cant = 0;
+            foreach (CartItem item in lista)
+            {
+                item.Price = item.Price * item.Quantity;
+                total = total + item.Price;
+                cant = cant + 1;
+            }
+
+            //Completamos la Order con la info del Cart
+
+            orderprecargada.ClientId = client.Id;
+            orderprecargada.OrderDate = DateTime.Now;
+            orderprecargada.TotalPrice = total;
+            orderprecargada.State = 1;
+            orderprecargada.OrderNumber = cartid;
+            orderprecargada.ItemCount = cant;
+
+            //Guardamos el OrderNumber en una Cookie
+            Response.Cookies["OrderNumber"].Value = cartid.ToString();
+            
+
+            //Insertamos la nueva Order
+            var op = new OrderProcess();
+            var ordercargada = new Order();
+            ordercargada = op.Insert(orderprecargada);
+            //op.Insert(orderprecargada);
+
+            return RedirectToAction("Index", "OrderDetail", new { area = "OrderDetails" });
         }
 
         [HttpPost]

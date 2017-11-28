@@ -73,5 +73,16 @@ namespace ASF.Business
             clientDac.UpdateById(client);
         }
 
+        /// <summary>
+        /// Find method.
+        /// </summary>
+        /// <param name="aspuser"></param>
+        /// <returns></returns>
+        public Client FindByASPUSER(string aspuser)
+        {
+            var clientDac = new ClientDAC();
+            var result = clientDac.SelectByASPUSER(aspuser);
+            return result;
+        }
     }
 }

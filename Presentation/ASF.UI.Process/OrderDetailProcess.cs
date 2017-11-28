@@ -68,5 +68,12 @@ namespace ASF.UI.Process
             var response = HttpPost<OrderDetail>("rest/OrderDetail/Edit", orderDetail, MediaType.Json);
         }
 
+        public List<OrderDetail> FindeByOrderId(int on)
+        {
+            var parameters = new Dictionary<string, object>();
+            parameters.Add("on", on);
+            var response = HttpGet<AllOrderDetailResponse>("rest/OrderDetail/FindByOrderId", parameters, MediaType.Json);
+            return response.Result;
+        }
     }
 }

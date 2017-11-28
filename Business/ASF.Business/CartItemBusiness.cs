@@ -63,6 +63,18 @@ namespace ASF.Business
         }
 
         /// <summary>
+        /// Find method.
+        /// </summary>
+        /// <param name="Cid"></param>
+        /// <returns></returns>
+        public List<CartItem> FindByCartId(int Cid)
+        {
+            var cartItemDac = new CartItemDAC();
+            var result = cartItemDac.SelectByCartId(Cid);
+            return result;
+        }
+
+        /// <summary>
         /// Update method.
         /// </summary>
         /// <param name="cartItem"></param>

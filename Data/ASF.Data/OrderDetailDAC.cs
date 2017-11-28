@@ -73,6 +73,31 @@ namespace ASF.Data
             }
         }
 
+        public List<OrderDetail> SelectByOrderId(int on)
+        {
+            // WARNING! Performance
+            const string sqlStatement = "SELECT [Id], [OrderId], [ProductId], [Price], [Quantity], [CreatedOn], [CreatedBy], [ChangedOn], [ChangedBy] " +
+                "FROM dbo.OrderDetail WHERE [OrderId]=@Order ";
+
+
+            var result = new List<OrderDetail>();
+            var db = DatabaseFactory.CreateDatabase(ConnectionName);
+            using (var cmd = db.GetSqlStringCommand(sqlStatement))
+            {
+                db.AddInParameter(cmd, "@Order", DbType.Int32, on);
+                using (var dr = db.ExecuteReader(cmd))
+                {
+                    while (dr.Read())
+                    {
+                        var orderD = LoadOrderDetail(dr); // Mapper
+                        result.Add(orderD);
+                    }
+                }
+            }
+
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>
