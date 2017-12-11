@@ -2,10 +2,10 @@
 @using GridMvc.Html
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Mi Carrito";
 }
 
-<h2>Index</h2>
+<h2>Mi Carrito</h2>
 
 <p>
     @Html.ActionLink("Seguir Comprando", "ProductList", "Product" ,new { Area= "Products" },null) 
@@ -126,28 +126,16 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.CartId)
+                        Producto
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.ProductId)
+                        Precio x Unidad
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Price)
+                        Cantidad
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Quantity)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreatedOn)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.CreatedBy)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ChangedOn)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.ChangedBy)
+                        Precio Total
                     </th>
                     <th></th>
                 </tr>
@@ -156,10 +144,8 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    var preciototal = item.Price * item.Quantity;
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.CartId)
-                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.ProductId)
                         </td>
@@ -170,21 +156,12 @@
                             @Html.DisplayFor(modelItem => item.Quantity)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.CreatedOn)
+                            @preciototal
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.CreatedBy)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ChangedOn)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ChangedBy)
-                        </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            @Html.ActionLink("Modificar", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Detalle", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Quitar", "Delete", new { id = item.Id })
                         </td>
                     </tr>
                 }

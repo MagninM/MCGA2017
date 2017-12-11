@@ -29,11 +29,12 @@ namespace ASF.UI.WbSite.Areas.CartItems.Controllers
             var cip = new CartItemProcess();
             var lista = cip.FindByCartId(cart.Id);
             var total = 0.0;
+            var parcial = 0.0;
             var CantidadTotal = 0;
             foreach (CartItem item in lista)
             {
-                item.Price = item.Price * item.Quantity;
-                total = total + item.Price;
+                parcial = item.Price * item.Quantity;
+                total = total + parcial;
                 CantidadTotal = CantidadTotal + item.Quantity;
             }
             ViewBag.Cantidad = CantidadTotal;

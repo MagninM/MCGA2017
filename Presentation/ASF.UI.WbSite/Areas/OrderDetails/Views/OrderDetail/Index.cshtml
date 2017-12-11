@@ -80,13 +80,16 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.ProductId)
+                        Producto
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Price)
+                        Pecio x Unidad
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Quantity)
+                        Cantidad
+                    </th>
+                    <th>
+                        Precio Total
                     </th>
                     <th></th>
                 </tr>
@@ -95,6 +98,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
+                    var preciototal = item.Price * item.Quantity;
                     <tr>
                         <td>
                             @Html.DisplayFor(modelItem => item.ProductId)
@@ -106,7 +110,10 @@
                             @Html.DisplayFor(modelItem => item.Quantity)
                         </td>
                         <td>
-                            @Html.ActionLink("Details", "Details", new { id = item.Id })
+                            @preciototal
+                        </td>
+                        <td>
+                            @Html.ActionLink("Detalle", "Details", new { id = item.Id })
                         </td>
                     </tr>
                 }

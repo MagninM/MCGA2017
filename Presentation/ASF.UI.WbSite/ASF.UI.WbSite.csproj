@@ -242,7 +242,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\CartItems\CartItemsAreaRegistration.cs" />
-    <Compile Include="Areas\CartItems\Controllers\CartItemController.cs" />
+    <Compile Include="Areas\Controllers\CartItemController.cs" />
     <Compile Include="Areas\Carts\CartsAreaRegistration.cs" />
     <Compile Include="Areas\Carts\Controllers\CartController.cs" />
     <Compile Include="Areas\Categories\CategoriesAreaRegistration.cs" />
@@ -255,8 +255,8 @@
     <Compile Include="Areas\Dealers\DealersAreaRegistration.cs" />
     <Compile Include="Areas\OrderDetails\Controllers\OrderDetailController.cs" />
     <Compile Include="Areas\OrderDetails\OrderDetailsAreaRegistration.cs" />
-    <Compile Include="Areas\OrderNumbers\Controllers\OrderNumberController.cs" />
-    <Compile Include="Areas\OrderNumbers\OrderNumbersAreaRegistration.cs" />
+    <Compile Include="Areas\CartItems\Models\OrderNumbers\Controllers\OrderNumberController.cs" />
+    <Compile Include="Areas\CartItems\Models\OrderNumbers\OrderNumbersAreaRegistration.cs" />
     <Compile Include="Areas\Orders\Controllers\OrderController.cs" />
     <Compile Include="Areas\Orders\OrdersAreaRegistration.cs" />
     <Compile Include="Areas\Products\Controllers\ProductController.cs" />
@@ -447,7 +447,7 @@
     <Content Include="Areas\Countries\Views\web.config" />
     <Content Include="Areas\Dealers\Views\web.config" />
     <Content Include="Areas\OrderDetails\Views\web.config" />
-    <Content Include="Areas\OrderNumbers\Views\web.config" />
+    <Content Include="Areas\CartItems\Models\OrderNumbers\Views\web.config" />
     <Content Include="Areas\Orders\Views\web.config" />
     <Content Include="Areas\Products\Views\web.config" />
     <Content Include="Areas\Ratings\Views\web.config" />
@@ -494,13 +494,13 @@
     <Content Include="Areas\OrderDetails\Views\OrderDetail\Delete.cshtml" />
     <Content Include="Areas\OrderDetails\Views\OrderDetail\Details.cshtml" />
     <Content Include="Areas\OrderDetails\Views\OrderDetail\Edit.cshtml" />
-    <Content Include="Areas\OrderNumbers\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\OrderNumbers\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\OrderNumbers\Views\OrderNumber\Index.cshtml" />
-    <Content Include="Areas\OrderNumbers\Views\OrderNumber\Create.cshtml" />
-    <Content Include="Areas\OrderNumbers\Views\OrderNumber\Delete.cshtml" />
-    <Content Include="Areas\OrderNumbers\Views\OrderNumber\Details.cshtml" />
-    <Content Include="Areas\OrderNumbers\Views\OrderNumber\Edit.cshtml" />
+    <Content Include="Areas\CartItems\Models\OrderNumbers\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\CartItems\Models\OrderNumbers\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\CartItems\Models\OrderNumbers\Views\OrderNumber\Index.cshtml" />
+    <Content Include="Areas\CartItems\Models\OrderNumbers\Views\OrderNumber\Create.cshtml" />
+    <Content Include="Areas\CartItems\Models\OrderNumbers\Views\OrderNumber\Delete.cshtml" />
+    <Content Include="Areas\CartItems\Models\OrderNumbers\Views\OrderNumber\Details.cshtml" />
+    <Content Include="Areas\CartItems\Models\OrderNumbers\Views\OrderNumber\Edit.cshtml" />
     <Content Include="Areas\Orders\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Orders\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Orders\Views\Order\Index.cshtml" />
@@ -691,14 +691,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\CartItems\Models\" />
+    <Folder Include="Areas\CartItems\Models\OrderNumbers\Models\" />
     <Folder Include="Areas\Carts\Models\" />
     <Folder Include="Areas\Categories\Models\" />
     <Folder Include="Areas\Clients\Models\" />
     <Folder Include="Areas\Countries\Models\" />
     <Folder Include="Areas\Dealers\Models\" />
     <Folder Include="Areas\OrderDetails\Models\" />
-    <Folder Include="Areas\OrderNumbers\Models\" />
     <Folder Include="Areas\Orders\Models\" />
     <Folder Include="Areas\Products\Models\" />
     <Folder Include="Areas\Ratings\Models\" />

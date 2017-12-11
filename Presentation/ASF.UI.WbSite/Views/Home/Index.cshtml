@@ -1,5 +1,27 @@
 ﻿@using ASF.UI.WbSite.Constants.ErrorController
 @using ASF.UI.WbSite.Constants.HomeController
+<style>
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  max-width: 100%;
+  height: 150px;
+}
+</style>
+
+
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 @{
     // title - The title of the page which appears in the browser window title. Aim for the title to be less than 70
     //         characters. The site name appears at the end for better SEO.
@@ -32,126 +54,85 @@
     <h1>Leather Goods</h1>
     <p class="lead">Conseguí las mejores carteras nacionales e importadas, bolsos playeros, billeteras, sobres, mochilas y muchos productos mas en nuestra pagina web y en nuestros locales a la calle ubicados en distitas zonas del pais. Formá parte de Leather Goods</p>
     <p>@Html.ActionLink("Lista Productos", "ProductList", "Product", new { Area = "Products" }, null)</p>
-    @*<p><a href="https://github.com/ASP-NET-Core-Boilerplate/Templates" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
 </header>
-
-@*<div class="row">
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-book"></span> Getting started</h2>
-        </header>
-        <p>
-            <a href="http://go.microsoft.com/fwlink/?LinkId=301870">ASP.NET Web API</a> is a framework that makes it easy to build HTTP services that reach
-            a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-            is an ideal platform for building RESTful applications on the .NET Framework.
-        </p>
-    </article>
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-dropbox"></span> Get more libraries</h2>
-        </header>
-        <p><a href="http://go.microsoft.com/fwlink/?LinkId=301871">NuGet</a> is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-    </article>
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-cloud"></span> Web Hosting</h2>
-        </header>
-        <p>You can easily find a <a href="http://go.microsoft.com/fwlink/?LinkId=301872">web hosting</a> company that offers the right mix of features and price for your applications.</p>
-    </article>
-</div>
-
 <div class="row">
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-mobile"></span> Bootstrap</h2>
-        </header>
-        <p><a href="http://getbootstrap.com/getting-started/">Bootstrap</a> is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web and is used for theming this site.</p>
-    </article>
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-flag"></span> Font Awesome</h2>
-        </header>
-        <p><a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> gives you scalable vector icons that can instantly be customized — size, colour, drop shadow, and anything that can be done with the power of CSS.</p>
-    </article>
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-check"></span> Modernizr</h2>
-        </header>
-        <p><a href="http://modernizr.com/">Modernizr</a> is a JavaScript library that detects HTML5 and CSS3 features in the user's browser.</p>
-    </article>
-</div>
+    <h2>
+        Productos Destacados
+    </h2>
+    <hr>
 
-<div class="row">
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-lock"></span> NWebsec</h2>
-        </header>
-        <p><a href="https://github.com/NWebsec/NWebsec">NWebsec</a> makes securing your ASP.NET MVC site easy with a handful of simple attributes you can add to your global filters, controllers or actions.</p>
-    </article>
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-life-ring"></span> Elmah</h2>
-        </header>
-        <p><a href="https://code.google.com/p/elmah/wiki/MVC">ELMAH</a> (Error Logging Modules and Handlers) is an application-wide error logging facility that is completely pluggable.</p>
-    </article>
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-line-chart"></span> Glimpse</h2>
-        </header>
-        <p><a href="http://getglimpse.com/">Glimpse</a> makes debugging and performance testing easier by providing real time diagnostics & insights.</p>
-    </article>
-</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <img class="img-src" src="~/Uploads/BilleteraT.jpg" alt="..." height="100">
+                        <div class="caption">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-4 price">
+                                    <h3 style="margin:5px auto;"><label>$500</label></h3>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <a href="/CartItems/CartItem/Create/50" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Agregar al carrito</a>
+                                </div>
+                            </div>
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <img class="img-src" src="~/Uploads/zapato1.jpg" alt="..." height="100">
+                        <div class="caption">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-4 price">
+                                    <h3 style="margin:5px auto;"><label>$850</label></h3>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <a href="/CartItems/CartItem/Create/20" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Agregar al carrito</a>
+                                </div>
+                            </div>
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <img class="img-src" src="~/Uploads/agenda1.jpg" alt="..." height="100">
+                        <div class="caption">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-4 price">
+                                    <h3 style="margin:5px auto;"><label>$400</label></h3>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <a href="/CartItems/CartItem/Create/11" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span> Agregar al carrito</a>
+                                </div>
+                            </div>
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        <img class="img-src" src="~/Uploads/cinto1.jpg" alt="..." height="100">
+                        <div class="caption">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4 col-xs-4 price">
+                                    <h3 style="margin:5px auto;"><label>$100</label></h3>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-8">
+                                    <a href="/CartItems/CartItem/Create/1" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Agregar al carrito</a>
+                                </div>
+                            </div>
+                            <p> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div class="row">
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-link"></span> Autofac</h2>
-        </header>
-        <p><a href="http://autofac.org/">Autofac</a> is an addictive <a href="http://martinfowler.com/articles/injection.html">inversion of control</a> container. The idea behind inversion of control is that, rather than tie the classes in your application together and let classes "new up" their dependencies, you switch it around so dependencies are instead passed in during class construction.</p>
-    </article>
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-wifi"></span> jQuery</h2>
-        </header>
-        <p><a href="http://jquery.com/">jQuery</a> is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.</p>
-    </article>
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-html5"></span> HTML5</h2>
-        </header>
-        <p><a href="http://en.wikipedia.org/wiki/HTML5">HTML5</a> is a core technology markup language of the Internet used for structuring and presenting content for the World Wide Web.</p>
-    </article>
-</div>
 
-<div class="row">
-    <article class="col-md-4" role="article">
-        <header>
-            <h2><span aria-hidden="true" class="fa fa-link"></span> ASP.NET MVC Boilerplate</h2>
-        </header>
-        <p>Find out more about how the <a href="http://rehansaeed.com/ASP-NET-Core-Boilerplate/">ASP.NET MVC Boilerplate</a> project template was put together and what features it includes out of the box. Read the <a href="https://github.com/ASP-NET-Core-Boilerplate/Templates/blob/master/RELEASE%20NOTES.md">release notes</a> to find out what updates are made to the project template and see the <a href="https://github.com/ASP-NET-Core-Boilerplate/Templates/blob/master/TODO.md">To-Do list</a> to view a list of features that will be added in the future.</p>
-    </article>
-    <article class="col-md-4">
-        <h2><span aria-hidden="true" class="fa fa-file-o"></span> This App Contains</h2>
-        <ul>
-            <li><a href="@Url.RouteUrl(HomeControllerRoute.GetIndex)"><strong>@Url.RouteUrl(HomeControllerRoute.GetIndex)</strong></a> - This index page.</li>
-            <li><a href="@Url.RouteUrl(HomeControllerRoute.GetAbout)"><strong>@Url.RouteUrl(HomeControllerRoute.GetAbout)</strong></a> - An about us page.</li>
-            <li><a href="@Url.RouteUrl(HomeControllerRoute.GetContact)"><strong>@Url.RouteUrl(HomeControllerRoute.GetContact)</strong></a> - A contact us page.</li>
-            <li><a href="@Url.RouteUrl(HomeControllerRoute.GetFeed)"><strong>@Url.RouteUrl(HomeControllerRoute.GetFeed)</strong></a> - An <a href="https://en.wikipedia.org/wiki/Atom_%28standard%29">Atom 1.0</a> feed.</li>
-            <li><a href="@Url.RouteUrl(HomeControllerRoute.GetRobotsText).TrimEnd('/')"><strong>@Url.RouteUrl(HomeControllerRoute.GetRobotsText).TrimEnd('/')</strong></a> - <a href="http://en.wikipedia.org/wiki/Robots_exclusion_standard">Robots text</a>.</li>
-            <li><a href="~/humans.txt"><strong>/humans.txt</strong></a> - <a href="http://humanstxt.org">Humans text</a>.</li>
-            <li><a href="@Url.RouteUrl(HomeControllerRoute.GetSitemapXml).TrimEnd('/')"><strong>@Url.RouteUrl(HomeControllerRoute.GetSitemapXml).TrimEnd('/')</strong></a> - <a href="http://www.sitemaps.org/protocol.html">Site-map XML</a>.</li>
-            <li><a href="@Url.RouteUrl(HomeControllerRoute.GetOpenSearchXml).TrimEnd('/')"><strong>@Url.RouteUrl(HomeControllerRoute.GetOpenSearchXml).TrimEnd('/')</strong></a> - <a href="http://www.hanselman.com/blog/CommentView.aspx?guid=50cc95b1-c043-451f-9bc2-696dc564766d#commentstart">Open search XML</a>.</li>
-            <li><a href="/@ConfigurationManager.AppSettings["elmah.mvc.route"]"><strong>/@ConfigurationManager.AppSettings["elmah.mvc.route"]</strong></a> - <a href="https://code.google.com/p/elmah/">Elmah</a> error logs.</li>
-            <li><a href="/glimpse.axd"><strong>/glimpse.axd</strong></a> - <a href="http://getglimpse.com">Glimpse</a> settings (Debug Only).</li>
-            <li><a href="/trace.axd"><strong>/trace.axd</strong></a> - Site <a href="https://msdn.microsoft.com/en-us/library/bb386420%28v=vs.140%29.aspx">trace</a> (Debug Only).</li>
-            <li><a href="@Url.RouteUrl(ErrorControllerRoute.GetBadRequest)"><strong>@Url.RouteUrl(ErrorControllerRoute.GetBadRequest)</strong></a> - <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error">400</a> error.</li>
-            <li><a href="@Url.RouteUrl(ErrorControllerRoute.GetForbidden)"><strong>@Url.RouteUrl(ErrorControllerRoute.GetForbidden)</strong></a> - <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error">403</a> error.</li>
-            <li><a href="@Url.RouteUrl(ErrorControllerRoute.GetInternalServerError)"><strong>@Url.RouteUrl(ErrorControllerRoute.GetInternalServerError)</strong></a> - <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error">500</a> error.</li>
-            <li><a href="@Url.RouteUrl(ErrorControllerRoute.GetNotFound)"><strong>@Url.RouteUrl(ErrorControllerRoute.GetNotFound)</strong></a> - <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error">404</a> error.</li>
-            <li><a href="@Url.RouteUrl(ErrorControllerRoute.GetUnauthorized)"><strong>@Url.RouteUrl(ErrorControllerRoute.GetUnauthorized)</strong></a> - <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error">401</a> error.</li>
-            <li><a href="@Url.RouteUrl(HomeControllerRoute.GetBrowserConfigXml).TrimEnd('/')"><strong>@Url.RouteUrl(HomeControllerRoute.GetBrowserConfigXml).TrimEnd('/')</strong></a> - <a href="http://www.buildmypinnedsite.com">Windows 8.1/10 Icons</a>.</li>
-            <li><a href="@Url.RouteUrl(HomeControllerRoute.GetManifestJson).TrimEnd('/')"><strong>@Url.RouteUrl(HomeControllerRoute.GetManifestJson).TrimEnd('/')</strong></a> - <a href="https://developer.chrome.com/multidevice/android/installtohomescreen">Android/Chrome Icons</a>.</li>
-            @*<li>@Html.ActionLink("Category", "Index", "Category")</li>
-        </ul>
-    </article>
-</div>*@
+</div>
+<div class="fb-like" data-href="https://www.facebook.com/fronterasbanda/" data-width="300" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+  

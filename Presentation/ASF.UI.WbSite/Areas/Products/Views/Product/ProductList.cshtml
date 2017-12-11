@@ -10,7 +10,7 @@
 <link href="~/Content/LeatherGoods.css" rel="stylesheet" />
 
 @{
-    ViewBag.Title = "ProductList";
+    ViewBag.Title = "Lista de Productos";
 }
 @{ var listadoDealer = new List<SelectListItem>();
     foreach (var std in ViewData["Category"] as IEnumerable<Category>)
@@ -24,7 +24,7 @@
     }
 }
 
-<h2>Product List</h2>
+<h2>Lista de Productos</h2>
 @using (Html.BeginForm("ProductList", "Product", FormMethod.Get))
 {
 <div class="form-group">
@@ -41,7 +41,7 @@
 @Html.Grid(Model).Columns(columns =>
 {
 columns.Add()
-    .Titled("Img")
+    .Titled("Imagen")
     .Sanitized(false)
     .Encoded(false)
     .SetWidth(110)
@@ -49,11 +49,11 @@ columns.Add()
         (
        "<img class=\"img-src-list\" src=\"/Uploads/" + @Url.Content(model.Image) + "\" alt=\"...\">")
         );
-    columns.Add(foo => foo.Title).Sortable(true).Filterable(true).SetWidth(110);
-    columns.Add(foo => foo.Description).Sortable(true).Filterable(true);
-    columns.Add(foo => foo.Price).Sortable(true).Filterable(true);
+    columns.Add(foo => foo.Title).Sortable(true).Filterable(true).SetWidth(110).Titled("Producto");
+    columns.Add(foo => foo.Description).Sortable(true).Filterable(true).Titled("Descripcion");
+    columns.Add(foo => foo.Price).Sortable(true).Filterable(true).Titled("Precio");
     columns.Add()
-       .Titled("Accion")
+       .Titled("")
        .Sanitized(false)
        .Encoded(false)
        .RenderValueAs(model => new HtmlString
